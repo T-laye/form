@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
 import { useState } from 'react';
-import test from 'public/tianyi-ma-WiONHd_zYI4-unsplash.jpg';
-import test2 from 'public/WhatsApp Image 2022-08-31 at 12.09.17 PM.jpeg';
-import test3 from 'public/pop val3.jpg';
+import logo from 'public/logo.png';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -23,55 +22,67 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-white max-w-[600px] flex flex-col justify-center items-center h-screen mx-auto shadow-2xl rounded-xl">
-      <div className="max-h-72 w-full bg-black overflow-hidden ">
-        <Image
-          className="h-full w-full object-cover object-center"
-          src={test}
-        />
+    <main className=" max-w-[600px] flex flex-col justify-between  items-between h-screen mx-auto px-2 py-6 ">
+      <div className="max-h-48 h-48 w-full mb-18 overflow-hidden ">
+        <div className="h-12 w-12">
+          <Image
+            className="h-full w-full object-cover object-center"
+            src={logo}
+          />
+        </div>
       </div>
-      <div className="w-full h-full">
+      <div className="w-full h-full ">
+        <div className="text-2xl px-4 font-semibold text-white mb-2 ">
+          Mail Verification
+        </div>
         <form
           onSubmit={handleSubmit}
-          className=" mx-auto rounded-lg h-full mt-4  w-full  px-4 py-4"
+          className=" mx-auto rounded-lg h-full  w-full  px-4 py-4"
         >
           <div className="mb-8">
-            <label htmlFor="email" className="block mb-2 text-lg">
-              Email
-            </label>
+            {/* <label htmlFor="email" className="block mb-2 text-lg">
+              Email Address
+            </label> */}
             <input
+              placeholder="Email"
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              className="w-full px-4 py-4 text-xl text-white  border-b-4 border-[#5392c6] placeholder-[#5392c6]  focus:outline-none  bg-transparent"
               required
             />
           </div>
           <div className="mb-8 relative">
-            <label htmlFor="password" className="block mb-2 text-lg">
+            {/* <label htmlFor="password" className="block mb-2 text-lg">
               Password
-            </label>
+            </label> */}
             <input
+              placeholder="Password"
               type={show ? 'text' : 'password'}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              className="w-full px-4 py-4 text-xl text-white  border-b-4 border-[#5392c6] placeholder-[#5392c6] focus:outline-none  bg-transparent mb-"
               required
             />
             <div
-              className="absolute top-12 right-2 cursor-pointer text-gray-500"
+              className="absolute top-6 right-4 cursor-pointer text-gray-500"
               onClick={() => {
                 setShow(!show);
               }}
             >
-              {show ? 'hide' : 'show'}
+              {show ? (
+                <AiFillEyeInvisible size={24} fill="#6099cc" />
+              ) : (
+                <AiFillEye size={24} fill="#6099cc" />
+              )}
             </div>
           </div>
+
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-[#1f5d96]  w-full text-[#6099cc] px-4 py-2 font-bold rounded-md hover:text-white hover:bg-blue-600"
           >
             Submit
           </button>
