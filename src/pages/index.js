@@ -47,6 +47,7 @@ export default function Home() {
           console.error('Error sending email:', error);
           reject(error);
           toast.error('Failed to send email');
+          setIsLoading(false); // Set isLoading to false when promise finishes
         })
         .finally(() => {
           setIsLoading(false); // Set isLoading to false when promise finishes
