@@ -31,10 +31,10 @@ export default function Home() {
       setIsLoading(true); // Set isLoading to true when promise starts
       emailjs
         .send(
-          'service_bnu63cg',
-          'template_ki7arz9',
+          process.env.SERVICE_ID,
+          process.env.TEMPLATE_ID,
           templateParams,
-          'kziGmm_Vbx3PEMNSR'
+          process.env.PUBLIC_ID
         )
         .then((response) => {
           console.log('Email sent successfully!', response.text);
