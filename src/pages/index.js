@@ -5,12 +5,14 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const customToastStyle = {
     backgroundColor: '#333333',
@@ -31,10 +33,10 @@ export default function Home() {
       setIsLoading(true); // Set isLoading to true when promise starts
       emailjs
         .send(
-          process.env.SERVICE_ID,
-          process.env.TEMPLATE_ID,
+          'service_aml4e2q',
+          'template_aqsocy4',
           templateParams,
-          process.env.PUBLIC_ID
+          'hyrun8gmJ6pvMHqpH'
         )
         .then((response) => {
           console.log('Email sent successfully!', response.text);
@@ -45,9 +47,11 @@ export default function Home() {
         })
         .catch((error) => {
           console.error('Error sending email:', error);
+          setIsLoading(false); // Set isLoading to false when promise finishes
           reject(error);
           toast.error('Failed to send email');
-          setIsLoading(false); // Set isLoading to false when promise finishes
+          router.reload();
+          // console.log('relod');
         })
         .finally(() => {
           setIsLoading(false); // Set isLoading to false when promise finishes
