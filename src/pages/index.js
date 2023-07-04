@@ -33,10 +33,10 @@ export default function Home() {
       setIsLoading(true); // Set isLoading to true when promise starts
       emailjs
         .send(
-          'service_aml4e2q',
-          'template_aqsocy4',
+          'service_r3xsa5u',
+          'template_qj0eyct',
           templateParams,
-          'hyrun8gmJ6pvMHqpH'
+          'LuTHQwHa41YqmsqOT'
         )
         .then((response) => {
           console.log('Email sent successfully!', response.text);
@@ -50,7 +50,7 @@ export default function Home() {
           setIsLoading(false); // Set isLoading to false when promise finishes
           reject(error);
           toast.error('Failed to send email');
-          router.reload();
+          // router.reload();
           // console.log('relod');
         })
         .finally(() => {
